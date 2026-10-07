@@ -1,11 +1,11 @@
 from playwright.sync_api import Page, expect
 from faker import Faker
 
-Base_URL = "http://2.26.162.45:8080/"
+BASE_URL = "http://2.26.162.45:8080/"
 
 
 def test_login_with_invalid_credentials(page: Page):
-    page.goto(Base_URL)
+    page.goto(BASE_URL)
     page.get_by_test_id("nav-login").click()
     expect(page.get_by_test_id("login-title")).to_be_visible()
 
