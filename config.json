@@ -1,0 +1,6 @@
+{
+    "base_url": "http://2.26.162.45:8080/",
+    "browser": "chromium",
+    "headless": false,
+    "timeout": 10000
+}
