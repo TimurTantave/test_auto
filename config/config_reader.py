@@ -4,25 +4,36 @@ from pathlib import Path
 
 
 class ConfigReader:
-    _instance = None
+    DEFAULT_CONFIG_PATH = (
+        Path(__file__).resolve().parent.parent / "config.json"
+    )
 
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = super().__new__(cls)
-            cls._instance._config = None
+    _instances = {}
 
-        return cls._instance
+    def __new__(cls, file_path=None):
+        if file_path is None:
+            path = cls.DEFAULT_CONFIG_PATH
+        else:
+            path = Path(file_path).resolve()
+
+        path = Path(path).resolve()
+
+        if path not in cls._instances:
+            instance = super().__new__(cls)
+            instance._config = None
+            instance._file_path = path
+            cls._instances[path] = instance
+
+        return cls._instances[path]
 
     def _load_config(self):
         if self._config is None:
-            config_path = Path(__file__).resolve().parent.parent / "config.json"
-
-            if not config_path.exists():
+            if not self._file_path.exists():
                 raise FileNotFoundError(
-                    f"Configuration file not found: {config_path}"
+                    f"Configuration file not found: {self._file_path}"
                 )
 
-            with config_path.open("r", encoding="utf-8") as file:
+            with self._file_path.open("r", encoding="utf-8") as file:
                 self._config = json.load(file)
 
         return self._config

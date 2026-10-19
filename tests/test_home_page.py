@@ -1,22 +1,22 @@
-
 import pytest
 
+from config.config_reader import ConfigReader
 from pages.home_page import HomePage
-from pages.search_results_page import SearchResultsPage
+from pages.search_results_page import SearchResultsPage, SortType
 
 
+@pytest.mark.parametrize("name", ["city", "habits"])
 @pytest.mark.parametrize(
-    "name, n, filter_type, sort_order",
+    "n, sort_order",
     [
-        ("city", 10, "Price: low to high", "price_asc"),
-        ("city", 15, "Price: high to low", "price_desc"),
-        ("habits", 10, "Price: low to high", "price_asc"),
-        ("habits", 15, "Price: high to low", "price_desc"),
+        (10, SortType.PRICE_ASC),
+        (15, SortType.PRICE_DESC),
     ],
 )
-def test_search_and_sort(page, name, n, filter_type, sort_order):
+def test_search_and_sort(page, name, n, sort_order):
     home_page = HomePage(page)
-    home_page.open_home_page()
+    config = ConfigReader()
+    page.goto(config.get("base_url"))
 
     # Поиск по слову city или habits
     home_page.search(name)
@@ -40,3 +40,12 @@ def test_search_and_sort(page, name, n, filter_type, sort_order):
     assert len(prices) == n, (
         f"Ожидалось {n} цен, получено {len(prices)}"
     )
+
+    if sort_order == SortType.PRICE_ASC:
+        assert prices == sorted(prices), (
+            f"Цены должны идти по возрастанию: {prices}"
+        )
+    elif sort_order == SortType.PRICE_DESC:
+        assert prices == sorted(prices, reverse=True), (
+            f"Цены должны идти по убыванию: {prices}"
+        )

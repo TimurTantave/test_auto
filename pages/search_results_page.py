@@ -1,6 +1,12 @@
-from playwright.sync_api import Page
+from enum import StrEnum
 
+from playwright.sync_api import Page
 from pages.base_page import BasePage
+
+
+class SortType(StrEnum):
+    PRICE_ASC = "price_asc"
+    PRICE_DESC = "price_desc"
 
 class SearchResultsPage(BasePage):
     def __init__(self, page:Page):
@@ -24,6 +30,10 @@ class SearchResultsPage(BasePage):
             '[data-testid="results-region"].is-loading'
         ).wait_for(state="hidden")
 
-    def get_cards_price(self,nums: int):
+    def get_cards_price(self, nums: int) -> list[int]:
         prices = self.prices.all()[:nums]
-        return [price.inner_text() for price in prices]
+
+        return [
+            int(price.get_attribute("data-price"))
+            for price in prices
+        ]
