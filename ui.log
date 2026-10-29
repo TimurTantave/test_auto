@@ -1,0 +1,220 @@
+2026-10-24 23:11:41 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/basic_auth'
+2026-10-24 23:20:59 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/basic_auth'
+2026-10-24 23:21:01 | INFO     | WebElement[Basic Auth success message]: get inner text
+2026-10-24 23:21:01 | INFO     | WebElement[Basic Auth success message]: inner text = 'Congratulations! You must have the proper credentials.'
+2026-10-24 23:41:19 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-24 23:41:21 | INFO     | PageActions: accept dialog
+2026-10-24 23:41:21 | INFO     | PageActions: expect dialog
+2026-10-24 23:41:21 | INFO     | WebElement[JS Alert button]: click
+2026-10-24 23:41:21 | INFO     | PageActions: dialog 'alert' with message 'I am a JS Alert'
+2026-10-24 23:41:21 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-24 23:41:21 | INFO     | WebElement[JavaScript alert result]: inner text = 'You successfully clicked an alert'
+2026-10-24 23:41:21 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-24 23:41:23 | INFO     | PageActions: accept dialog
+2026-10-24 23:41:23 | INFO     | PageActions: expect dialog
+2026-10-24 23:41:23 | INFO     | WebElement[JS Confirm button]: click
+2026-10-24 23:41:23 | INFO     | PageActions: dialog 'confirm' with message 'I am a JS Confirm'
+2026-10-24 23:41:23 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-24 23:41:23 | INFO     | WebElement[JavaScript alert result]: inner text = 'You clicked: Ok'
+2026-10-24 23:41:23 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-24 23:41:24 | INFO     | PageActions: accept prompt
+2026-10-24 23:41:24 | INFO     | PageActions: expect dialog
+2026-10-24 23:41:24 | INFO     | WebElement[JS Prompt button]: click
+2026-10-24 23:41:24 | INFO     | PageActions: dialog 'prompt' with message 'I am a JS prompt'
+2026-10-24 23:41:24 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-24 23:41:24 | INFO     | WebElement[JavaScript alert result]: inner text = 'You entered: Hello Playwright'
+2026-10-24 23:52:21 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:52:46 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:52:48 | INFO     | WebElement[Context menu hot spot]: right click
+2026-10-24 23:53:11 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:53:27 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:53:40 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:53:41 | INFO     | WebElement[Context menu hot spot]: right click
+2026-10-24 23:53:44 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:53:46 | INFO     | WebElement[Context menu hot spot]: right click
+2026-10-24 23:53:56 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-24 23:54:02 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/context_menu'
+2026-10-29 01:41:12 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/slider'
+2026-10-29 01:41:14 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:41:34 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/slider'
+2026-10-29 01:41:39 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:41:58 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/slider'
+2026-10-29 01:41:58 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:42:43 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-29 01:42:45 | INFO     | PageActions: accept dialog
+2026-10-29 01:42:45 | INFO     | PageActions: expect dialog
+2026-10-29 01:42:45 | INFO     | WebElement[JS Alert button]: click
+2026-10-29 01:42:45 | INFO     | PageActions: dialog 'alert' with message 'I am a JS Alert'
+2026-10-29 01:42:45 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-29 01:42:45 | INFO     | WebElement[JavaScript alert result]: inner text = 'You successfully clicked an alert'
+2026-10-29 01:42:45 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-29 01:42:47 | INFO     | PageActions: accept dialog
+2026-10-29 01:42:47 | INFO     | PageActions: expect dialog
+2026-10-29 01:42:47 | INFO     | WebElement[JS Confirm button]: click
+2026-10-29 01:42:47 | INFO     | PageActions: dialog 'confirm' with message 'I am a JS Confirm'
+2026-10-29 01:42:47 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-29 01:42:47 | INFO     | WebElement[JavaScript alert result]: inner text = 'You clicked: Ok'
+2026-10-29 01:42:47 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/javascript_alerts'
+2026-10-29 01:42:49 | INFO     | PageActions: accept prompt
+2026-10-29 01:42:49 | INFO     | PageActions: expect dialog
+2026-10-29 01:42:49 | INFO     | WebElement[JS Prompt button]: click
+2026-10-29 01:42:49 | INFO     | PageActions: dialog 'prompt' with message 'I am a JS prompt'
+2026-10-29 01:42:49 | INFO     | WebElement[JavaScript alert result]: get inner text
+2026-10-29 01:42:49 | INFO     | WebElement[JavaScript alert result]: inner text = 'You entered: Hello Playwright'
+2026-10-29 01:42:54 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/slider'
+2026-10-29 01:42:54 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:47:51 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:47:52 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:47:52 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:47:52 | INFO     | WebElement[Slider]: with value '4'
+2026-10-29 01:47:52 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:47:52 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:50:15 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:50:16 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:50:16 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:50:16 | INFO     | WebElement[Slider]: click
+2026-10-29 01:50:16 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:50:16 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:50:56 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:50:58 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:50:58 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:50:58 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:50:58 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:52:30 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:52:32 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:52:32 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:52:32 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:52:32 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:52:38 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:52:44 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:52:44 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:52:44 | INFO     | WebElement[Slider]: get attribute 'value'
+2026-10-29 01:52:44 | INFO     | WebElement[Slider]: attribute 'value' = '0'
+2026-10-29 01:55:02 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:55:04 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:55:04 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 01:55:04 | INFO     | WebElement[Slider displayed value]: get inner text
+2026-10-29 01:55:04 | INFO     | WebElement[Slider displayed value]: inner text = '0'
+2026-10-29 01:55:04 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:55:04 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 01:56:33 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:56:35 | INFO     | WebElement[Slider displayed value]: get inner text
+2026-10-29 01:56:35 | INFO     | WebElement[Slider displayed value]: inner text = '0.5'
+2026-10-29 01:57:25 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:57:27 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:57:27 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 01:57:27 | INFO     | WebElement[Slider displayed value]: get inner text
+2026-10-29 01:57:27 | INFO     | WebElement[Slider displayed value]: inner text = '0'
+2026-10-29 01:57:27 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:57:27 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 01:57:38 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:57:39 | INFO     | WebElement[Slider displayed value]: get inner text
+2026-10-29 01:57:39 | INFO     | WebElement[Slider displayed value]: inner text = '0.5'
+2026-10-29 01:57:45 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 01:57:47 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:57:47 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 01:57:47 | INFO     | WebElement[Slider displayed value]: get inner text
+2026-10-29 01:57:47 | INFO     | WebElement[Slider displayed value]: inner text = '0'
+2026-10-29 01:57:47 | INFO     | WebElement[Horizontal slider]: get attribute 'value'
+2026-10-29 01:57:47 | INFO     | WebElement[Horizontal slider]: attribute 'value' = '0'
+2026-10-29 02:05:17 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/horizontal_slider'
+2026-10-29 02:05:18 | INFO     | WebElement[Horizontal Slider]: focus
+2026-10-29 02:05:18 | INFO     | WebElement[Horizontal Slider]: press 'Home'
+2026-10-29 02:05:18 | INFO     | WebElement[Horizontal Slider]: press 'ArrowRight'
+2026-10-29 02:05:18 | INFO     | WebElement[Horizontal Slider]: press 'ArrowRight'
+2026-10-29 02:05:19 | INFO     | WebElement[Horizontal Slider]: press 'ArrowRight'
+2026-10-29 02:05:19 | INFO     | WebElement[Horizontal Slider]: press 'ArrowRight'
+2026-10-29 02:05:19 | INFO     | WebElement[Horizontal Slider Value]: get inner text
+2026-10-29 02:05:19 | INFO     | WebElement[Horizontal Slider Value]: inner text = '2'
+2026-10-29 02:09:40 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:14:24 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:14:26 | INFO     | WebElement[User figures[0]]: hover
+2026-10-29 02:14:26 | INFO     | WebElement[User figures[1]]: hover
+2026-10-29 02:14:26 | INFO     | WebElement[User figures[2]]: hover
+2026-10-29 02:16:16 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:16:18 | INFO     | WebElement[User figures[0]]: hover
+2026-10-29 02:20:53 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:20:55 | INFO     | WebElement[User images[0]]: hover
+2026-10-29 02:20:55 | INFO     | WebElement[User name [0]]: get inner text
+2026-10-29 02:20:55 | INFO     | WebElement[User name [0]]: inner text = 'name: user1'
+2026-10-29 02:20:55 | INFO     | WebElement[User images[1]]: hover
+2026-10-29 02:20:55 | INFO     | WebElement[User name [1]]: get inner text
+2026-10-29 02:20:55 | INFO     | WebElement[User name [1]]: inner text = 'name: user2'
+2026-10-29 02:20:55 | INFO     | WebElement[User images[2]]: hover
+2026-10-29 02:20:55 | INFO     | WebElement[User name [2]]: get inner text
+2026-10-29 02:20:55 | INFO     | WebElement[User name [2]]: inner text = 'name: user3'
+2026-10-29 02:23:30 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:23:31 | INFO     | WebElement[User name [0]]: get inner text
+2026-10-29 02:23:31 | INFO     | WebElement[User name [0]]: inner text = 'name: user1'
+2026-10-29 02:23:31 | INFO     | WebElement[User name [1]]: get inner text
+2026-10-29 02:23:31 | INFO     | WebElement[User name [1]]: inner text = 'name: user2'
+2026-10-29 02:23:31 | INFO     | WebElement[User name [2]]: get inner text
+2026-10-29 02:23:31 | INFO     | WebElement[User name [2]]: inner text = 'name: user3'
+2026-10-29 02:24:55 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:25:28 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:30:31 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/hovers'
+2026-10-29 02:30:33 | INFO     | WebElement[User images[0]]: hover
+2026-10-29 02:30:33 | INFO     | WebElement[User names[0]]: get inner text
+2026-10-29 02:30:33 | INFO     | WebElement[User names[0]]: inner text = 'name: user1'
+2026-10-29 02:30:33 | INFO     | WebElement[User images[1]]: hover
+2026-10-29 02:30:33 | INFO     | WebElement[User names[1]]: get inner text
+2026-10-29 02:30:33 | INFO     | WebElement[User names[1]]: inner text = 'name: user2'
+2026-10-29 02:30:33 | INFO     | WebElement[User images[2]]: hover
+2026-10-29 02:30:33 | INFO     | WebElement[User names[2]]: get inner text
+2026-10-29 02:30:33 | INFO     | WebElement[User names[2]]: inner text = 'name: user3'
+2026-10-29 02:37:57 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/windows'
+2026-10-29 02:37:59 | INFO     | PageActions: expect new page
+2026-10-29 02:37:59 | INFO     | WebElement[Click Here link]: click
+2026-10-29 02:37:59 | INFO     | WebElement[New Window heading]: get inner text
+2026-10-29 02:37:59 | INFO     | WebElement[New Window heading]: inner text = 'New Window'
+2026-10-29 02:37:59 | INFO     | PageActions: bring page to front
+2026-10-29 02:37:59 | INFO     | PageActions: expect new page
+2026-10-29 02:37:59 | INFO     | WebElement[Click Here link]: click
+2026-10-29 02:37:59 | INFO     | WebElement[New Window heading]: get inner text
+2026-10-29 02:37:59 | INFO     | WebElement[New Window heading]: inner text = 'New Window'
+2026-10-29 02:37:59 | INFO     | PageActions: bring page to front
+2026-10-29 02:37:59 | INFO     | PageActions: close page
+2026-10-29 02:37:59 | INFO     | PageActions: close page
+2026-10-29 02:46:24 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/nested_frames'
+2026-10-29 02:46:25 | INFO     | WebElement[Left frame text]: get inner text
+2026-10-29 02:46:25 | INFO     | WebElement[Left frame text]: inner text = 'LEFT'
+2026-10-29 02:46:25 | INFO     | WebElement[Right frame text]: get inner text
+2026-10-29 02:46:25 | INFO     | WebElement[Right frame text]: inner text = 'RIGHT'
+2026-10-29 02:46:25 | INFO     | WebElement[Bottom frame text]: get inner text
+2026-10-29 02:46:25 | INFO     | WebElement[Bottom frame text]: inner text = 'BOTTOM'
+2026-10-29 02:46:25 | INFO     | WebElement[Middle frame text]: get inner text
+2026-10-29 02:46:25 | INFO     | WebElement[Middle frame text]: inner text = 'MIDDLE'
+2026-10-29 02:52:25 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/dynamic_content'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[0]]: get attribute 'src'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[0]]: attribute 'src' = '/img/forkme_right_sauce.svg'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[1]]: get attribute 'src'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[1]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[2]]: get attribute 'src'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[2]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[3]]: get attribute 'src'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[3]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[0]]: get attribute 'src'
+2026-10-29 02:52:26 | INFO     | WebElement[Dynamic content images[0]]: attribute 'src' = '/img/forkme_right_sauce.svg'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[1]]: get attribute 'src'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[1]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[2]]: get attribute 'src'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[2]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-3.jpg'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[3]]: get attribute 'src'
+2026-10-29 02:52:27 | INFO     | WebElement[Dynamic content images[3]]: attribute 'src' = '/img/avatars/Original-Facebook-Geek-Profile-Avatar-5.jpg'
+2026-10-29 02:57:42 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 02:58:19 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:00:08 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:01:50 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:05:30 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:08:59 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:27:09 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/infinite_scroll'
+2026-10-29 03:31:44 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/upload'
+2026-10-29 03:31:49 | INFO     | WebElement[Upload button]: click
+2026-10-29 03:31:49 | INFO     | WebElement[Uploaded message]: get inner text
+2026-10-29 03:31:49 | INFO     | WebElement[Uploaded message]: inner text = 'File Uploaded!'
+2026-10-29 03:31:49 | INFO     | WebElement[Uploaded filename]: get inner text
+2026-10-29 03:31:49 | INFO     | WebElement[Uploaded filename]: inner text = 'test_upload.txt'
+2026-10-29 03:44:42 | INFO     | PageActions: goto 'https://the-internet.herokuapp.com/download'
+2026-10-29 03:47:07 | INFO     | WebElement[Downloadable files[2]]: get inner text
+2026-10-29 03:47:07 | INFO     | WebElement[Downloadable files[2]]: inner text = '13ee8980-c9c0-4352-a2fa-da40f9588930-smoke-image.png'
+2026-10-29 03:47:07 | INFO     | WebElement[Downloadable files[2]]: click
