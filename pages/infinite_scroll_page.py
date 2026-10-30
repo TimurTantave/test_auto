@@ -9,7 +9,7 @@ class InfiniteScrollPage(BasePage):
         super().__init__(page)
         self.paragraphs = MultiWebElement(
             page=self.page,
-            locator=self.page.locator(".jscroll-inner .jscroll-added"),
+            locator=self.page.locator(".jscroll-added"),
             description="Infinite scroll paragraphs",
         )
 

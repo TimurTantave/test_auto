@@ -1,4 +1,3 @@
-
 from playwright.sync_api import Page
 
 from pages.base_page import BasePage
@@ -13,7 +12,6 @@ class BasicAuthPage(BasePage):
             page.locator("div.example p"),
             description="Basic Auth success message",
         )
-
 
     def get_success_message(self) -> str:
         return self.success_message.get_inner_text()

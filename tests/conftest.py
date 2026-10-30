@@ -54,7 +54,6 @@ def auth_context(browser: Browser) -> BrowserContext:
 @pytest.fixture
 def auth_page(auth_context: BrowserContext) -> Page:
     page = auth_context.new_page()
-    page.set_default_timeout(10_000)
     yield page
     page.close()
 
