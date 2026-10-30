@@ -6,7 +6,6 @@ from ui.web_element import WebElement
 
 
 class NestedFramesPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/nested_frames"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)

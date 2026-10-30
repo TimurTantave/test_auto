@@ -8,8 +8,6 @@ from ui.multi_web_element import MultiWebElement
 
 
 class FileDownloadPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/download"
-
     def __init__(self, page: Page) -> None:
         super().__init__(page)
 
@@ -17,13 +15,6 @@ class FileDownloadPage(BasePage):
             page=self.page,
             locator=self.page.locator("#content a"),
             description="Downloadable files",
-        )
-
-    def open(self, url: str) -> None:
-        self.page.goto(
-            url,
-            wait_until="domcontentloaded",
-            timeout=30000,
         )
 
     def get_file_name(self, index: int) -> str:

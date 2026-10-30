@@ -1,40 +1,20 @@
-
-from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import Page
 
 from pages.infinite_scroll_page import InfiniteScrollPage
 
 
-def test_infinite_scroll_loads_at_least_10_paragraphs(
-    page: Page,
-) -> None:
+def test_infinite_scroll_loads_at_least_10_paragraphs(page: Page, ) -> None:
+    URL = "https://the-internet.herokuapp.com/infinite_scroll"
+    page.goto(URL)
+
     scroll_page = InfiniteScrollPage(page)
-    scroll_page.open(scroll_page.URL)
 
-    max_attempts = 30
-
-    for _ in range(max_attempts):
-        previous_count = scroll_page.get_paragraphs_count()
-
-        if previous_count >= 10:
-            break
-
-        scroll_page.scroll_down()
-
-        try:
-            page.wait_for_function(
-                """previousCount =>
-                    document.querySelectorAll(
-                        '.jscroll-inner .jscroll-added'
-                    ).length > previousCount
-                """,
-                arg=previous_count,
-                timeout=3000,
-            )
-        except PlaywrightTimeoutError:
-            continue
+    expected_count = 10
+    scroll_page.scroll_until_paragraphs_count(expected_count)
 
     actual_count = scroll_page.get_paragraphs_count()
 
-    assert actual_count >= 10, (
-        f"Expected at least 10 paragraphs, found {actual_count}"
+    assert actual_count >= expected_count, (
+        f"Paragraph count mismatch. "
+        f"Expected: at least {expected_count}, Actual: {actual_count}"
     )

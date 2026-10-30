@@ -7,8 +7,6 @@ from ui.web_element import WebElement
 
 
 class WindowsPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/windows"
-
     def __init__(self, page: Page) -> None:
         super().__init__(page)
 
@@ -28,6 +26,3 @@ class WindowsPage(BasePage):
 
     def return_to_original_tab(self) -> None:
         self.actions.bring_to_front()
-
-    def get_open_tabs_count(self) -> int:
-        return len(self.page.context.pages)

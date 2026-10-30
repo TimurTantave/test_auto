@@ -1,5 +1,3 @@
-import re
-
 from playwright.sync_api import Page
 
 from pages.base_page import BasePage
@@ -7,7 +5,6 @@ from ui.multi_web_element import MultiWebElement
 
 
 class HoversPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/hovers"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)
@@ -32,6 +29,3 @@ class HoversPage(BasePage):
 
     def get_user_name(self, index: int) -> str:
         return self.user_names.nth(index).get_inner_text()
-
-    def is_valid_user_name(self, name: str) -> bool:
-        return re.fullmatch(r"name: user\d+", name) is not None

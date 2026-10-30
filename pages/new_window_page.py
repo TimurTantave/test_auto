@@ -16,6 +16,3 @@ class NewWindowPage(BasePage):
 
     def get_heading_text(self) -> str:
         return self.heading.get_inner_text()
-
-    def close(self) -> None:
-        self.actions.close_page()

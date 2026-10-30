@@ -8,7 +8,6 @@ from ui.web_element import WebElement
 
 
 class FileUploadPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/upload"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)

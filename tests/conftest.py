@@ -36,7 +36,6 @@ def context(browser: Browser) -> BrowserContext:
 @pytest.fixture
 def page(context: BrowserContext) -> Page:
     page = context.new_page()
-    page.set_default_timeout(10_000)
     return page
 
 

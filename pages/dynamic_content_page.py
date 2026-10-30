@@ -4,14 +4,13 @@ from pages.base_page import BasePage
 
 
 class DynamicContentPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/dynamic_content"
 
     def __init__(self, page):
         super().__init__(page)
 
         self.images = MultiWebElement(
             page=self.page,
-            locator=self.page.locator(".row img"),
+            locator=self.page.locator(".row img[src*='/img/avatars/']"),
             description="Dynamic content images",
         )
 
@@ -24,6 +23,3 @@ class DynamicContentPage(BasePage):
     def has_duplicate_images(self) -> bool:
         sources = self.get_image_sources()
         return len(sources) != len(set(sources))
-
-    def refresh_page(self) -> None:
-        self.actions.reload()

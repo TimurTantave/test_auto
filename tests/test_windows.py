@@ -5,28 +5,46 @@ from pages.window_page import WindowsPage
 
 
 def test_open_multiple_windows(page: Page) -> None:
-    windows_page = WindowsPage(page)
-    windows_page.open(windows_page.URL)
+    URL = "https://the-internet.herokuapp.com/windows"
+    page.goto(URL)
 
-    # Открываем первую новую вкладку
+    windows_page = WindowsPage(page)
+
     first_window = windows_page.open_new_window()
 
-    assert first_window.get_heading_text() == "New Window"
+    expected_heading = "New Window"
+    actual_heading = first_window.get_heading_text()
 
-    # Возвращаемся к исходной вкладке
-    windows_page.return_to_original_tab()
+    assert actual_heading == expected_heading, (
+        f"First window heading mismatch. "
+        f"Expected: '{expected_heading}', Actual: '{actual_heading}'"
+    )
 
-    # Открываем вторую новую вкладку
     second_window = windows_page.open_new_window()
 
-    assert second_window.get_heading_text() == "New Window"
+    expected_heading = "New Window"
+    actual_heading = second_window.get_heading_text()
 
-    # Возвращаемся к исходной вкладке
-    windows_page.return_to_original_tab()
+    assert actual_heading == expected_heading, (
+        f"Second window heading mismatch. "
+        f"Expected: '{expected_heading}', Actual: '{actual_heading}'"
+    )
 
-    # Закрываем обе новые вкладки
-    first_window.close()
-    second_window.close()
+    expected_tabs_count = 3
+    actual_tabs_count = len(page.context.pages)
 
-    # Проверяем, что осталась только исходная вкладка
-    assert windows_page.get_open_tabs_count() == 1
+    assert actual_tabs_count == expected_tabs_count, (
+        f"Open tabs count mismatch. "
+        f"Expected: {expected_tabs_count}, Actual: {actual_tabs_count}"
+    )
+
+    first_window.page.close()
+    second_window.page.close()
+
+    expected_tabs_count = 1
+    actual_tabs_count = len(page.context.pages)
+
+    assert actual_tabs_count == expected_tabs_count, (
+        f"Open tabs count after closing windows mismatch. "
+        f"Expected: {expected_tabs_count}, Actual: {actual_tabs_count}"
+    )

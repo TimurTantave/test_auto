@@ -6,7 +6,6 @@ from ui.web_element import WebElement
 
 
 class AlertsPage(BasePage):
-    URL = "https://the-internet.herokuapp.com/javascript_alerts"
 
     def __init__(self, page: Page) -> None:
         super().__init__(page)
@@ -26,9 +25,6 @@ class AlertsPage(BasePage):
             page.locator("#result"),
             description="JavaScript alert result",
         )
-
-    def open_page(self) -> None:
-        self.open(self.URL)
 
     def click_js_alert(self) -> None:
         self.actions.run_and_accept_alert(
