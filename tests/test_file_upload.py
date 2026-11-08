@@ -14,7 +14,7 @@ def test_file_upload(page: Page, tmp_path: Path) -> None:
     file_path.write_text("Test file for upload", encoding="utf-8")
 
     upload_page = FileUploadPage(page)
-    upload_page.open(URL)
+    upload_page.actions.goto(URL)
     upload_page.upload_file(file_path)
 
     assert upload_page.get_uploaded_message() == "File Uploaded!"
