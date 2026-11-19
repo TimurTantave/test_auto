@@ -24,3 +24,7 @@ class UniversityService(BaseService):
     def create_student(self, student_request: StudentRequest) -> StudentResponse:
         response = self.student_helper.post_student(json=student_request.model_dump())
         return StudentResponse(**response.json())
+
+    def get_groups(self) -> list[GroupResponse]:
+        response = self.group_helper.get_groups()
+        return [GroupResponse(**group) for group in response.json()]
