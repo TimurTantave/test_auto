@@ -1,4 +1,3 @@
-
 from faker import Faker
 
 from services.university.university_service import UniversityService
@@ -26,11 +25,6 @@ class TestGroup:
         )
 
         groups = university_service.get_groups()
-
-        # Assert
-        assert isinstance(groups, list), (
-            f"Expected list, but got {type(groups)}"
-        )
 
         assert all(
             isinstance(group, GroupResponse)

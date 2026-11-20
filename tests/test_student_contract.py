@@ -1,9 +1,10 @@
-
 from faker import Faker
 import requests
 
 from services.university.helpers.student_helper import StudentHelper
 from services.university.helpers.group_helper import GroupHelper
+from services.university.models.student_request import StudentRequest
+from services.university.university_service import UniversityService
 
 fake = Faker()
 
@@ -11,32 +12,39 @@ fake = Faker()
 class TestStudentContract:
 
     def test_create_student_success(self, uni_api_utils_admin):
+        # Arrange
         group_helper = GroupHelper(api_utils=uni_api_utils_admin)
-        student_helper = StudentHelper(api_utils=uni_api_utils_admin)
+        university_service = UniversityService(api_utils=uni_api_utils_admin)
 
         group_response = group_helper.post_group(
             json={"name": fake.name()}
         )
 
-        assert group_response.status_code == requests.status_codes.codes.created
-
-        student_data = {
-            "first_name": fake.first_name(),
-            "last_name": fake.last_name(),
-            "email": fake.email(),
-            "degree": "Bachelor",
-            "phone": fake.numerify("+7##########"),
-            "group_id": group_response.json()["id"]
-        }
-
-        response = student_helper.post_student(json=student_data)
-
-        assert response.status_code == requests.status_codes.codes.created, (
-            f"Wrong status code: {response.status_code}, "
-            f"but expected: {requests.status_codes.codes.created}"
+        assert group_response.status_code == requests.status_codes.codes.created, (
+            f"Group creation failed: actual={group_response.status_code}, "
+            f"expected={requests.status_codes.codes.created}. "
+            f"Response body: {group_response.text}"
         )
 
-        assert response.json()["email"] == student_data["email"]
+        student_request = StudentRequest(
+            first_name=fake.first_name(),
+            last_name=fake.last_name(),
+            email=fake.email(),
+            degree="Bachelor",
+            phone=fake.numerify("+7##########"),
+            group_id=group_response.json()["id"]
+        )
+
+        # Act
+        student_response = university_service.create_student(
+            student_request=student_request
+        )
+
+        # Assert
+        assert student_response.email == student_request.email, (
+            f"Student email mismatch: actual={student_response.email}, "
+            f"expected={student_request.email}"
+        )
 
     def test_create_student_anonym(self, university_api_utils_anonym):
         student_helper = StudentHelper(api_utils=university_api_utils_anonym)
