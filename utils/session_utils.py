@@ -5,7 +5,8 @@ import requests
 from requests import Session
 
 from logger.logger import Logger
-from utils.json_utils import  JsonUtils
+from utils.json_utils import JsonUtils
+
 
 def log_response(func):
     def _log_response(*args, **kwargs) -> requests.Response:
@@ -14,7 +15,9 @@ def log_response(func):
         body = json.dumps(response.json(), indent=2) if JsonUtils.is_json(response.text) else response.text
         Logger.info(f"response status code=: {response.status_code}, elapsed_time= {response.elapsed} \n{body}\n")
         return response
+
     return _log_response
+
 
 class ApiUtils:
 

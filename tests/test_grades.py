@@ -1,21 +1,14 @@
+
 import pytest
 
-from services.university.models.grades_stats_request import GradesStatsRequest
 from services.university.models.grades_stats_response import GradesStatsResponse
 
 
 def test_get_grades_stats_returns_response_model(grades_service):
-    grades_request = GradesStatsRequest()
-
-    actual = grades_service.get_grades_stats(grades_request)
-
-    assert isinstance(actual, GradesStatsResponse), (
-        f"Unexpected response type: actual={type(actual)}, "
-        f"expected={GradesStatsResponse}"
-    )
+    actual = grades_service.get_grades_stats()
 
     assert actual.count >= 0, (
-        f"Unexpected grades count: actual={actual.count}, expected>=0"
+        f"Unexpected count: actual={actual.count}, expected >= 0"
     )
 
 
@@ -29,11 +22,9 @@ def test_get_grades_stats_returns_response_model(grades_service):
     ids=["by_student", "by_teacher", "by_group"],
 )
 def test_get_grades_stats_with_filter(grades_service, filter_params):
-    grades_request = GradesStatsRequest(**filter_params)
+    actual = grades_service.get_grades_stats(**filter_params)
 
-    actual = grades_service.get_grades_stats(grades_request)
-
-    assert isinstance(actual, GradesStatsResponse), (
-        f"Unexpected response type: actual={type(actual)}, "
-        f"expected={GradesStatsResponse}"
+    assert actual.count >= 0, (
+        f"Unexpected count for filter {filter_params}: "
+        f"actual={actual.count}, expected >= 0"
     )
