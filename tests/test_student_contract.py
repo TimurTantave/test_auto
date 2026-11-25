@@ -12,7 +12,6 @@ fake = Faker()
 class TestStudentContract:
 
     def test_create_student_success(self, uni_api_utils_admin):
-        # Arrange
         group_helper = GroupHelper(api_utils=uni_api_utils_admin)
         university_service = UniversityService(api_utils=uni_api_utils_admin)
 
@@ -35,12 +34,10 @@ class TestStudentContract:
             group_id=group_response.json()["id"]
         )
 
-        # Act
         student_response = university_service.create_student(
             student_request=student_request
         )
 
-        # Assert
         assert student_response.email == student_request.email, (
             f"Student email mismatch: actual={student_response.email}, "
             f"expected={student_request.email}"

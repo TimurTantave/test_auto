@@ -1,26 +1,28 @@
 import pytest
 
+from tests.test_grades_busniess import assert_grades_stats
+
+
 @pytest.mark.parametrize(
-    "filter_type",
-    ["student_id", "teacher_id", "group_id"],
+    ("filter_type", "filter_key"),
+    [
+        ("student_id", "student"),
+        ("teacher_id", "teacher"),
+        ("group_id", "group"),
+    ],
     ids=["by_student", "by_teacher", "by_group"],
 )
 def test_get_grades_stats_with_filter(
     grades_service,
     grades_test_data,
     filter_type,
+    filter_key,
 ):
-    filter_params = {
-        "student_id": grades_test_data["student"].id,
-        "teacher_id": grades_test_data["teacher"].id,
-        "group_id": grades_test_data["group"].id,
-    }
+    grades = grades_test_data["grades"]
+    filter_value = grades_test_data[filter_key].id
 
     actual = grades_service.get_grades_stats(
-        **{filter_type: filter_params[filter_type]}
+        **{filter_type: filter_value}
     )
 
-    assert actual.count == len(grades_test_data["grades"]), (
-        f"Unexpected count for filter {filter_type}: "
-        f"actual={actual.count}, expected={len(grades_test_data['grades'])}"
-    )
+    assert_grades_stats(actual, grades)

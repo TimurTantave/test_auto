@@ -1,9 +1,6 @@
-from urllib import request
-
-import requests
-
 from services.general.base_service import BaseService
 from services.university.helpers.grades_helper import GradesHelper
+from services.university.models.grade_response import GradeResponse
 from services.university.models.grades_stats_response import GradesStatsResponse
 from utils.session_utils import ApiUtils
 
@@ -39,11 +36,12 @@ class GradesService(BaseService):
             teacher_id: int,
             student_id: int,
             grade: int,
-    ) -> requests.Response:
+    ) -> GradeResponse:
         data = {
             "teacher_id": teacher_id,
             "student_id": student_id,
             "grade": grade,
         }
 
-        return self.grades_helper.post_grade(data=data)
+        response = self.grades_helper.post_grade(data=data)
+        return GradeResponse(**response.json())
