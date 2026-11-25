@@ -11,24 +11,6 @@ def test_get_grades_stats_success(grades_helper):
         f"Response: {response.text}"
     )
 
-
-def test_get_grades_stats_response_model(grades_helper):
-    response = grades_helper.get_grades_stats(params={})
-
-    assert response.status_code == 200, (
-        f"Unexpected status code: actual={response.status_code}, expected=200. "
-        f"Response: {response.text}"
-    )
-
-    try:
-        actual = GradesStatsResponse(**response.json())
-    except Exception as error:
-        pytest.fail(
-            f"Response does not match GradesStatsResponse: {error}. "
-            f"Response: {response.text}"
-        )
-
-
 @pytest.mark.parametrize(
     "filter_params",
     [

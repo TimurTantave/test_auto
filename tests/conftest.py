@@ -195,3 +195,30 @@ def teacher_factory(university_service):
         return university_service.create_teacher(teacher_request)
 
     return create_teacher
+
+@pytest.fixture
+def grades_test_data(
+    group_factory,
+    student_factory,
+    teacher_factory,
+    grade_creator,
+):
+    group = group_factory()
+    student = student_factory(group.id)
+    teacher = teacher_factory()
+
+    grades = [2, 4, 5]
+
+    for grade in grades:
+        grade_creator(
+            teacher_id=teacher.id,
+            student_id=student.id,
+            grade=grade,
+        )
+
+    return {
+        "group": group,
+        "student": student,
+        "teacher": teacher,
+        "grades": grades,
+    }
