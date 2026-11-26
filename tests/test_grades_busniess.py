@@ -70,4 +70,7 @@ def test_get_grades_stats_applies_filters(
 
     actual = grades_service.get_grades_stats(**params)
 
-    assert actual == expected
+    assert actual == expected, (
+        f"Unexpected grades stats for filters {params}: "
+        f"actual={actual}, expected={expected}"
+    )

@@ -40,4 +40,8 @@ def test_get_grades_stats_aggregates_student_grades(
 
     actual = grades_service.get_grades_stats(student_id=test_student.id)
 
-    assert actual == expected
+    assert actual == expected, (
+        f"Unexpected grades stats for student {test_student.id} "
+        f"with grades {grades}: "
+        f"actual={actual}, expected={expected}"
+    )
