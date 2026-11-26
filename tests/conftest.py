@@ -2,7 +2,7 @@
 import pytest
 
 from faker import Faker
-
+from uuid import uuid4
 from services.auth.auth_service import AuthService
 from services.auth.models.login_request import LoginRequest
 from services.auth.models.register_request import RegisterRequest
@@ -107,9 +107,8 @@ def grades_helper(uni_api_utils_admin):
 @pytest.fixture
 def test_group(university_service):
     group_request = GroupRequest(
-        name=f"Test group {faker.unique.word()}"
+        name=f"Test group {uuid4().hex}"
     )
-
     return university_service.create_group(group_request)
 
 
@@ -159,11 +158,12 @@ def test_teacher(university_service):
         subject="History",
     )
     return university_service.create_teacher(teacher_request)
+
 @pytest.fixture
 def group_factory(university_service):
     def create_group():
         group_request = GroupRequest(
-            name=faker.unique.word()
+            name=f"Test group {uuid4().hex}"
         )
         return university_service.create_group(group_request)
 
@@ -224,3 +224,36 @@ def grades_test_data(
         "teacher": teacher,
         "grades": grades,
     }
+
+@pytest.fixture
+def grades_filter_ids(
+    group_factory,
+    student_factory,
+    teacher_factory,
+    grade_creator,
+):
+    group = group_factory()
+    other_group = group_factory()
+    student = student_factory(group.id)
+    classmate = student_factory(group.id)
+    other_student = student_factory(other_group.id)
+    teacher = teacher_factory()
+    other_teacher = teacher_factory()
+
+    for author, recipient, grade in (
+        (teacher, student, 4),
+        (other_teacher, student, 2),
+        (teacher, classmate, 3),
+        (teacher, other_student, 5),
+    ):
+        grade_creator(
+            teacher_id=author.id,
+            student_id=recipient.id,
+            grade=grade,
+        )
+
+    return {
+        "student_id": student.id,
+        "teacher_id": teacher.id,
+        "group_id": group.id,
+    }, other_group.id

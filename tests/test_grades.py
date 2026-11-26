@@ -1,28 +1,43 @@
 import pytest
 
-from tests.test_grades_busniess import assert_grades_stats
+from services.university.models.grades_stats_response import GradesStatsResponse
 
 
 @pytest.mark.parametrize(
-    ("filter_type", "filter_key"),
+    ("grades", "expected"),
     [
-        ("student_id", "student"),
-        ("teacher_id", "teacher"),
-        ("group_id", "group"),
+        pytest.param(
+            (),
+            GradesStatsResponse(count=0, min=None, max=None, avg=None),
+            id="student_without_grades",
+        ),
+        pytest.param(
+            (0,),
+            GradesStatsResponse(count=1, min=0, max=0, avg=0),
+            id="single_zero",
+        ),
+        pytest.param(
+            (2, 5, 0, 2),
+            GradesStatsResponse(count=4, min=0, max=5, avg=2.25),
+            id="repeated_grade_and_fractional_average",
+        ),
     ],
-    ids=["by_student", "by_teacher", "by_group"],
 )
-def test_get_grades_stats_with_filter(
+def test_get_grades_stats_aggregates_student_grades(
     grades_service,
-    grades_test_data,
-    filter_type,
-    filter_key,
+    test_student,
+    test_teacher,
+    grade_creator,
+    grades,
+    expected,
 ):
-    grades = grades_test_data["grades"]
-    filter_value = grades_test_data[filter_key].id
+    for grade in grades:
+        grade_creator(
+            teacher_id=test_teacher.id,
+            student_id=test_student.id,
+            grade=grade,
+        )
 
-    actual = grades_service.get_grades_stats(
-        **{filter_type: filter_value}
-    )
+    actual = grades_service.get_grades_stats(student_id=test_student.id)
 
-    assert_grades_stats(actual, grades)
+    assert actual == expected

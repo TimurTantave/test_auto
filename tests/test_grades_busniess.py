@@ -1,149 +1,73 @@
-
 import pytest
-from utils.soft_assert import SoftAssert
+
+from services.university.models.grades_stats_response import GradesStatsResponse
 
 
-def assert_grades_stats(actual, grades):
-    expected = {
-        "count": len(grades),
-        "min": min(grades) if grades else None,
-        "max": max(grades) if grades else None,
-        "avg": pytest.approx(sum(grades) / len(grades)) if grades else None,
-    }
-
-    soft_assert = SoftAssert()
-
-    soft_assert.check(
-        actual.count == expected["count"],
-        f"Expected count {expected['count']}, actual {actual.count}"
-    )
-    soft_assert.check(
-        actual.min == expected["min"],
-        f"Expected min {expected['min']}, actual {actual.min}"
-    )
-    soft_assert.check(
-        actual.max == expected["max"],
-        f"Expected max {expected['max']}, actual {actual.max}"
-    )
-    soft_assert.check(
-        actual.avg == expected["avg"],
-        f"Expected avg {expected['avg']}, actual {actual.avg}"
-    )
-
-    soft_assert.assert_all()
-
-
-
-def test_get_grades_stats_filter_by_student(
+@pytest.mark.parametrize(
+    ("filters", "use_other_group", "expected"),
+    [
+        pytest.param(
+            ("student_id",),
+            False,
+            GradesStatsResponse(count=2, min=2, max=4, avg=3),
+            id="student_includes_multiple_teachers",
+        ),
+        pytest.param(
+            ("teacher_id",),
+            False,
+            GradesStatsResponse(count=3, min=3, max=5, avg=4),
+            id="teacher_includes_multiple_groups",
+        ),
+        pytest.param(
+            ("group_id",),
+            False,
+            GradesStatsResponse(count=3, min=2, max=4, avg=3),
+            id="group_includes_multiple_students_and_teachers",
+        ),
+        pytest.param(
+            ("student_id", "teacher_id"),
+            False,
+            GradesStatsResponse(count=1, min=4, max=4, avg=4),
+            id="student_and_teacher",
+        ),
+        pytest.param(
+            ("student_id", "group_id"),
+            True,
+            GradesStatsResponse(count=0, min=None, max=None, avg=None),
+            id="student_and_other_group",
+        ),
+        pytest.param(
+            ("teacher_id", "group_id"),
+            False,
+            GradesStatsResponse(count=2, min=3, max=4, avg=3.5),
+            id="teacher_and_group",
+        ),
+        pytest.param(
+            ("student_id", "teacher_id", "group_id"),
+            False,
+            GradesStatsResponse(count=1, min=4, max=4, avg=4),
+            id="all_filters_match",
+        ),
+        pytest.param(
+            ("student_id", "teacher_id", "group_id"),
+            True,
+            GradesStatsResponse(count=0, min=None, max=None, avg=None),
+            id="all_filters_with_other_group",
+        ),
+    ],
+)
+def test_get_grades_stats_applies_filters(
     grades_service,
-    grades_test_data,
-    student_factory,
-    grade_creator,
+    grades_filter_ids,
+    filters,
+    use_other_group,
+    expected,
 ):
-    student_1 = grades_test_data["student"]
-    teacher = grades_test_data["teacher"]
-    group = grades_test_data["group"]
-    grades = grades_test_data["grades"]
+    ids, other_group_id = grades_filter_ids
+    params = {field: ids[field] for field in filters}
+    if use_other_group:
+        params["group_id"] = other_group_id
 
-    student_2 = student_factory(group.id)
+    actual = grades_service.get_grades_stats(**params)
 
-    grade_creator(
-        teacher_id=teacher.id,
-        student_id=student_2.id,
-        grade=0,
-    )
-
-    actual = grades_service.get_grades_stats(
-        student_id=student_1.id
-    )
-
-    assert_grades_stats(actual, grades)
-
-
-def test_get_grades_stats_filter_by_teacher(
-    grades_service,
-    grades_test_data,
-    teacher_factory,
-    grade_creator,
-):
-    student = grades_test_data["student"]
-    teacher_1 = grades_test_data["teacher"]
-    grades = grades_test_data["grades"]
-
-    teacher_2 = teacher_factory()
-
-    grade_creator(
-        teacher_id=teacher_2.id,
-        student_id=student.id,
-        grade=1,
-    )
-
-    actual = grades_service.get_grades_stats(
-        teacher_id=teacher_1.id
-    )
-
-    assert_grades_stats(actual, grades)
-
-
-def test_get_grades_stats_filter_by_group(
-    grades_service,
-    grades_test_data,
-    group_factory,
-    student_factory,
-    grade_creator,
-):
-    group_1 = grades_test_data["group"]
-    student_1 = grades_test_data["student"]
-    teacher = grades_test_data["teacher"]
-    grades = grades_test_data["grades"]
-
-    group_2 = group_factory()
-    student_2 = student_factory(group_2.id)
-
-    grade_creator(
-        teacher_id=teacher.id,
-        student_id=student_2.id,
-        grade=1,
-    )
-
-    actual = grades_service.get_grades_stats(
-        group_id=group_1.id
-    )
-
-    assert_grades_stats(actual, grades)
-
-
-def test_get_grades_stats_filter_by_multiple_params(
-    grades_service,
-    grades_test_data,
-    student_factory,
-    teacher_factory,
-    grade_creator,
-):
-    group = grades_test_data["group"]
-    student_1 = grades_test_data["student"]
-    teacher_1 = grades_test_data["teacher"]
-    grades = grades_test_data["grades"]
-
-    student_2 = student_factory(group.id)
-    teacher_2 = teacher_factory()
-
-    grade_creator(
-        teacher_id=teacher_2.id,
-        student_id=student_1.id,
-        grade=1,
-    )
-
-    grade_creator(
-        teacher_id=teacher_1.id,
-        student_id=student_2.id,
-        grade=1,
-    )
-
-    actual = grades_service.get_grades_stats(
-        student_id=student_1.id,
-        teacher_id=teacher_1.id,
-        group_id=group.id,
-    )
-
-    assert_grades_stats(actual, grades)
+    assert actual == expected
