@@ -13,5 +13,5 @@ class GradesHelper(BaseHelper):
         return response
 
     def post_grade(self, data: dict) -> requests.Response:
-        response = self.api_utils.post("/grades/", data=data)
+        response = self.api_utils.post(self.GRADE_ENDPOINT, data=data)
         return response

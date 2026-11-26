@@ -120,7 +120,10 @@ class TestStudentContract:
 
         first_response = student_helper.post_student(json=student_data)
 
-        assert first_response.status_code == requests.status_codes.codes.created
+        assert first_response.status_code == requests.status_codes.codes.created, (
+            f"Expected status code {requests.status_codes.codes.created}, "
+            f"actual {first_response.status_code}"
+        )
 
         duplicate_data = student_data.copy()
         duplicate_data["phone"] = fake.numerify("+7##########")

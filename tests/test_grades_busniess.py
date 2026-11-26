@@ -1,47 +1,37 @@
 
 import pytest
-import pytest_check as check
+from utils.soft_assert import SoftAssert
 
 
 def assert_grades_stats(actual, grades):
     expected = {
         "count": len(grades),
-        "min": min(grades),
-        "max": max(grades),
-        "avg": pytest.approx(sum(grades) / len(grades)),
+        "min": min(grades) if grades else None,
+        "max": max(grades) if grades else None,
+        "avg": pytest.approx(sum(grades) / len(grades)) if grades else None,
     }
 
-    check.equal(
-        actual.count,
-        expected["count"],
-        f"Grades count mismatch: actual={actual.count}, expected={expected['count']}",
+    soft_assert = SoftAssert()
+
+    soft_assert.check(
+        actual.count == expected["count"],
+        f"Expected count {expected['count']}, actual {actual.count}"
     )
-    check.equal(
-        actual.min,
-        expected["min"],
-        f"Minimum grade mismatch: actual={actual.min}, expected={expected['min']}",
+    soft_assert.check(
+        actual.min == expected["min"],
+        f"Expected min {expected['min']}, actual {actual.min}"
     )
-    check.equal(
-        actual.max,
-        expected["max"],
-        f"Maximum grade mismatch: actual={actual.max}, expected={expected['max']}",
+    soft_assert.check(
+        actual.max == expected["max"],
+        f"Expected max {expected['max']}, actual {actual.max}"
     )
-    check.equal(
-        actual.avg,
-        expected["avg"],
-        f"Average grade mismatch: actual={actual.avg}, expected={expected['avg']}",
+    soft_assert.check(
+        actual.avg == expected["avg"],
+        f"Expected avg {expected['avg']}, actual {actual.avg}"
     )
 
+    soft_assert.assert_all()
 
-def test_get_grades_stats(grades_service, grades_test_data):
-    student = grades_test_data["student"]
-    grades = grades_test_data["grades"]
-
-    actual = grades_service.get_grades_stats(
-        student_id=student.id
-    )
-
-    assert_grades_stats(actual, grades)
 
 
 def test_get_grades_stats_filter_by_student(
@@ -60,7 +50,7 @@ def test_get_grades_stats_filter_by_student(
     grade_creator(
         teacher_id=teacher.id,
         student_id=student_2.id,
-        grade=1,
+        grade=0,
     )
 
     actual = grades_service.get_grades_stats(

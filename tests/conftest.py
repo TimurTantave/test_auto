@@ -140,10 +140,12 @@ def grade_creator(grades_service):
             grade=grade,
         )
 
-        assert response.status_code == 201, (
-            f"Failed to create grade: actual={response.status_code}, "
-            f"expected=201. Response: {response.text}"
+        assert response.grade == grade, (
+            f"Failed to create grade: "
+            f"actual={response.grade}, expected={grade}"
         )
+        assert response.teacher_id == teacher_id
+        assert response.student_id == student_id
 
         return response
 

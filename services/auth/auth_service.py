@@ -1,4 +1,4 @@
-from services.auth.helpers.Auth_helper import AuthorizationHelper
+from services.auth.helpers.auth_helper import AuthorizationHelper
 from services.auth.helpers.user_helper import UserHelper
 from services.auth.models.login_request import LoginRequest
 from services.auth.models.login_response import LoginResponse

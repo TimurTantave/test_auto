@@ -10,7 +10,6 @@ fake = Faker()
 class TestGroup:
 
     def test_get_groups(self, uni_api_utils_admin):
-        # Arrange
         university_service = UniversityService(
             api_utils=uni_api_utils_admin
         )
@@ -19,7 +18,6 @@ class TestGroup:
             name=fake.name()
         )
 
-        # Act
         created_group = university_service.create_group(
             group_request=group_request
         )
