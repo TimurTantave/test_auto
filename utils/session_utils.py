@@ -12,8 +12,12 @@ def log_response(func):
     def _log_response(*args, **kwargs) -> requests.Response:
         response = func(*args, **kwargs)
         Logger.info(f"request: {curlify.to_curl(response.request)}")
-        body = json.dumps(response.json(), indent=2) if JsonUtils.is_json(response.text) else response.text
-        Logger.info(f"response status code=: {response.status_code}, elapsed_time= {response.elapsed} \n{body}\n")
+        if JsonUtils.is_json(response.text):
+            body = json.dumps(response.json(), indent=2)
+        else:
+            body = response.text
+        Logger.info(f"response status code=: {response.status_code},"
+                    f" elapsed_time= {response.elapsed} \n{body}\n")
         return response
 
     return _log_response
