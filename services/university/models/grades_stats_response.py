@@ -1,5 +1,7 @@
 from pydantic import BaseModel, ConfigDict, Field
-from services.university.models.grade_request import MIN_GRADE, MAX_GRADE
+
+from services.university.models.grade_request import MAX_GRADE, MIN_GRADE
+
 
 class GradesStatsResponse(BaseModel):
     model_config = ConfigDict(extra="forbid")

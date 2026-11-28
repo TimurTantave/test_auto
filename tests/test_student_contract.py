@@ -1,8 +1,8 @@
-from faker import Faker
 import requests
+from faker import Faker
 
-from services.university.helpers.student_helper import StudentHelper
 from services.university.helpers.group_helper import GroupHelper
+from services.university.helpers.student_helper import StudentHelper
 from services.university.models.student_request import StudentRequest
 from services.university.university_service import UniversityService
 

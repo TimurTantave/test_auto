@@ -1,13 +1,13 @@
+from services.general.base_service import BaseService
 from services.university.helpers.group_helper import GroupHelper
 from services.university.helpers.student_helper import StudentHelper
+from services.university.helpers.teacher_helper import TeacherHelper
 from services.university.models.group_request import GroupRequest
 from services.university.models.group_response import GroupResponse
 from services.university.models.student_request import StudentRequest
 from services.university.models.student_response import StudentResponse
-from services.university.helpers.teacher_helper import TeacherHelper
 from services.university.models.teacher_request import TeacherRequest
 from services.university.models.teacher_response import TeacherResponse
-from services.general.base_service import BaseService
 from utils.session_utils import ApiUtils
 
 

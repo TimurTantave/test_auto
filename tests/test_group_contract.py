@@ -1,5 +1,5 @@
-from faker import Faker
 import requests
+from faker import Faker
 
 from services.university.helpers.group_helper import GroupHelper
 

@@ -1,6 +1,7 @@
 from enum import StrEnum
 
-from pydantic import BaseModel,ConfigDict
+from pydantic import BaseModel, ConfigDict
+
 
 class DegreeEnum(StrEnum):
     ASSOCIATE = 'Associate'

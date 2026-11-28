@@ -1,21 +1,20 @@
 
-import pytest
-
-from faker import Faker
 from uuid import uuid4
+
+import pytest
+from faker import Faker
+
 from services.auth.auth_service import AuthService
 from services.auth.models.login_request import LoginRequest
 from services.auth.models.register_request import RegisterRequest
-from services.university.models.teacher_request import TeacherRequest
-from services.university.helpers.grades_helper import GradesHelper
 from services.university.grades_service import GradesService
+from services.university.helpers.grades_helper import GradesHelper
 from services.university.models.base_student import DegreeEnum
 from services.university.models.group_request import GroupRequest
 from services.university.models.student_request import StudentRequest
+from services.university.models.teacher_request import TeacherRequest
 from services.university.university_service import UniversityService
-
 from utils.session_utils import ApiUtils
-
 
 faker = Faker()
 

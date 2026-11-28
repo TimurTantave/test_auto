@@ -1,5 +1,7 @@
-from services.general.helpers.base_helper import BaseHelper
 import requests
+
+from services.general.helpers.base_helper import BaseHelper
+
 
 class StudentHelper(BaseHelper):
     STUDENT_PREFIX = "/students"

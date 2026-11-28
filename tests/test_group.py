@@ -1,8 +1,8 @@
 from faker import Faker
 
-from services.university.university_service import UniversityService
 from services.university.models.group_request import GroupRequest
 from services.university.models.group_response import GroupResponse
+from services.university.university_service import UniversityService
 
 fake = Faker()
 
